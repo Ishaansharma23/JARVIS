@@ -1,8 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey = "AIzaSyAjITuSiC3U5tu1fpQbw44vtMAuyD1RVAw";
 
-const genAI = new GoogleGenerativeAI(apiKey);
+const API_KEY = import.meta.env.VITE_API_KEY;
+
+const genAI = new GoogleGenerativeAI(API_KEY);
 
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
@@ -27,4 +28,4 @@ async function run(prompt) {
   console.log("Output:", result.response.text());
 }
 
-export default run();
+export default run;
