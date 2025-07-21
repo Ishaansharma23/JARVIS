@@ -1,6 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -13,7 +12,7 @@ const generationConfig = {
   temperature: 1,
   topP: 0.95,
   topK: 40,
-  maxOutputTokens: 8192,
+  maxOutputTokens: 20,
   responseMimeType: "text/plain",
 };
 
@@ -24,8 +23,7 @@ async function run(prompt) {
   });
 
   const result = await chatSession.sendMessage(prompt);
-
-  console.log("Output:", result.response.text());
+  return result.response.text();
 }
 
 export default run;
