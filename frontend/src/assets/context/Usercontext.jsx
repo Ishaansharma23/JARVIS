@@ -40,7 +40,20 @@ const Usercontext = ({children}) => {   // function to speak the text
       let currIndex = event.resultIndex;
       let transcript = event.results[currIndex][0].transcript;
       setPrompt(transcript);
-      aiResponse(transcript);
+      takeCommand(transcript.toLowerCase())
+    }
+
+    function takeCommand(command){
+      if(command.includes("open")&& command.includes("youtube")){
+        window.open("https://www.youtube.com", "_blank"); // _blank yt open krega new tab m 
+        speak("opening youtube")
+        setPrompt("Opening Youtube")
+        setTimeout(() => {
+          setSpeaking(false);
+        }, 4000);
+      }else{
+        aiResponse(command);
+      }
     }
 
 
